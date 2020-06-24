@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>306</LabelID>
+    <LabelName>输出店面JS代码</LabelName>
+    <LabelType>4</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,3,1,显示数|NodeID,10,1,节点ID</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_mdmx ON ZL_CommonModel.ItemID=ZL_C_mdmx.ID</LabelTable>
+    <LabelField>ZL_CommonModel.GeneralID,ZL_C_mdmx.bdmap</LabelField>
+    <LabelWhere>(NodeID=@NodeID or FirstNodeID=@NodeID) and status=99</LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>[{Repeate}{	url:'{ZL:GetInfoUrl({Field="GeneralID"/})/}',map:'{Field="bdmap"/}'},{/Repeate}]</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>338</LabelID>
+    <LabelName>获取门店名称列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,10,1,显示数</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_Store_reg ON ZL_CommonModel.ItemID=ZL_Store_reg.ID</LabelTable>
+    <LabelField>ZL_CommonModel.GeneralID,ZL_Store_reg.StoreName</LabelField>
+    <LabelWhere>ModelID=24 And Status=99</LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>{Repeate}&lt;li&gt;&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}?ProClass={$GetRequest(ProClass)$}"&gt;{Field="StoreName"/}&lt;/a&gt;&lt;/li&gt;
+{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,180 @@
+﻿{ZL.Source id="节点栏目信息数据源"/}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="节点栏目信息数据源" FD="NodeName" page="0"/}_{$SiteName/}</title>
+<meta name="Keywords" content="{SField sid="节点栏目信息数据源" FD="Meta_Keywords" page="0"/}" />
+<meta name="description" content="{SField sid="节点栏目信息数据源" FD="Meta_Description" page="0"/}" />
+{ZL:Boot()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script src="/js/scrolltopcontrol.js" type="text/javascript"></script>
+</style>
+</head>
+<body style="padding-top:108px;">
+<nav class="navbar navbar-default navbar-fixed-top home_nav" id="home_nav">
+<div class="container">
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="cai_logo">
+<div class="navbar-header">
+<a class="navbar-brand" href="/"><embed pluginspage="http://www.adobe.com/svg/viewer/install/" src="{$CssDir/}images/cai_logo.jpg" type="image/svg+xml" /></a>
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav nav_list" style="padding-top:15px">
+<li><a href="/">首页</a></li>
+<li><a href="#">精品展示</a></li>
+<li><a href="#">员工轶事</a></li>
+<li><a href="#">顾客风采</a></li> 
+<li><a href="#">明星光临</a></li>
+<li><a href="#">外卖开放</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right" style="padding-top:15px">
+<li><a href="/User/">用户登录</a></li>
+<li><a href="/User/Register.aspx">会员注册</a></li> 
+<li><a href="{ZL:GetNodeLinkUrl(25)/}">帮助</a></li>    
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
+</nav>
+
+
+
+
+<div id="carousel-example-generic" class="carousel slide cai_banner" data-ride="carousel">
+<!-- Indicators -->
+<ol class="carousel-indicators">
+<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+</ol>
+<!-- Wrapper for slides -->
+<div class="carousel-inner" role="listbox">
+<div class="item active cai_banner1">
+<div class="carousel-caption">
+</div>
+</div>
+<div class="item cai_banner2">
+<div class="carousel-caption">
+</div>
+</div>
+<div class="item cai_banner3">
+<div class="carousel-caption">
+</div>
+</div>
+</div>
+<!-- Controls -->
+</div>
+
+<div class="cai_cont">
+<div class="container">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="cai_cont_l">
+<div class="cai_cont_t"><span>产品分类</span></div>
+<ul>
+{ZL.Label id="输出指定节点标题_无时间属性[可选标题长度]" NodeID="35" TitleNum="60" ShowNum="6" /}
+</ul>
+</div>
+<div class="cai_cont_l">
+<div class="cai_cont_t"><span>在线客服</span></div>
+<div class="cai_time">工作时间<br><span>周一至周六 ： 9:00-17:30</span></div>
+<div class="cai_phone">联系方式<br><span>客服经理 ： 0791-87693755</span></div>
+</div>
+
+</div>
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+<div class="row">
+<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+<div class="cai_cont_l">
+<div class="cai_cont_t"><span>动态新闻</span><a class="pull-right" href="{ZL:GetNodeLinkUrl(33)/}">MORE<i class="fa fa-chevron-circle-right"></i></a></div>
+<ul style="padding-left:0px;">
+{ZL.Label id="输出指定节点标题_无时间属性[可选标题长度]" NodeID="33" TitleNum="60" ShowNum="6" /}
+</ul>
+</div>
+</div>
+<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+<div class="cai_cont_r">
+<div class="cai_cont_t"><span>优秀加盟商</span></div>
+{ZL.Label id="蔡先生输出店铺信息" ShowNum="2" NodeID="34" TitleNum="40" /}
+</div>
+</div>
+</div>
+
+<div id="demo">
+<div id="indemo">
+<div id="demo1">
+<a href="#"><img src="{$CssDir/}Images/cai_img1.jpg" border="0" alt="" /></a>
+<a href="#"><img src="{$CssDir/}Images/cai_img2.jpg" border="0" alt="" /></a>
+<a href="#"><img src="{$CssDir/}Images/cai_img3.jpg" border="0" alt="" /></a>
+<a href="#"><img src="{$CssDir/}Images/cai_img4.jpg" border="0" alt="" /></a>
+<a href="#"><img src="{$CssDir/}Images/cai_img5.jpg" border="0" alt="" /></a>
+<a href="#"><img src="{$CssDir/}Images/cai_img6.jpg" border="0" alt="" /></a>
+
+</div>
+<div id="demo2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{ZL.Label id="全站底部"/}
+</body>
+</html>
+<script>
+//检测固顶事件
+var IO=document.getElementById('home_nav'),Y=IO,H=0,IE6;
+IE6=window.ActiveXObject&&!window.XMLHttpRequest;
+while(Y){H+=Y.offsetTop;Y=Y.offsetParent};
+if(IE6)
+    IO.style.cssText="position:absolute;top:expression(this.fix?(document"+
+        ".documentElement.scrollTop-(this.javascript||"+H+")):0)";
+window.onscroll=function (){
+    var d=document,s=Math.max(d.documentElement.scrollTop,document.body.scrollTop);
+     if(s>H&&IO.fix||s<=H&&!IO.fix)return;
+    if(!IE6)IO.style.position=IO.fix?"":"fixed";        
+    IO.fix=!IO.fix;
+};
+try{document.execCommand("BackgroundImageCache",false,true)}catch(e){};
+ //]]>
+
+//兼容wp8
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+  var msViewportStyle = document.createElement("style");
+  msViewportStyle.appendChild(
+    document.createTextNode(
+      "@-ms-viewport{width:auto!important}"
+    )
+  );
+  document.getElementsByTagName("head")[0].
+    appendChild(msViewportStyle);
+}
+
+var speed=10; //数字越大速度越慢
+var tab=document.getElementById("demo");
+var tab1=document.getElementById("demo1");
+var tab2=document.getElementById("demo2");
+tab2.innerHTML=tab1.innerHTML;
+function Marquee(){
+if(tab2.offsetWidth-tab.scrollLeft<=0)
+tab.scrollLeft-=tab1.offsetWidth
+else{
+tab.scrollLeft++;
+}
+}
+var MyMar=setInterval(Marquee,speed);
+tab.onmouseover=function() {clearInterval(MyMar)};
+tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)};
+
+</script>

@@ -1,0 +1,116 @@
+﻿{ZL.Source id="文章模型数据源标签"/}<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="文章模型数据源标签" FD="Title" page="0"/}_{$SiteName/}</title>
+<meta name="Keywords" content="{SField sid="文章模型数据源标签" FD="Tagkey" page="0"/}" />
+<meta name="Description" content="{SField sid="文章模型数据源标签" FD="Title" page="0"/}">
+{ZL:Boot()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script src="/JS/Controls/B_User.js"></script>
+</head>
+<body>
+<div class="hidden-xs">
+{ZL.Label id="全站头部"/} 
+</div>
+<div class="cont_banner">{ZL.Label id="输出指定ID节点名" NodeID="{SField sid="文章模型数据源标签" FD="NodeID" page="0"/}" /}</div>
+
+<div class="container">
+<div class="news_mySites margin_top20 hidden-xs">
+<ul class="breadcrumb">
+<li><a href="/">首页</a></li>
+{ZL.Label id="输出多级节点导航_V3" NodeID="{SField sid="文章模型数据源标签" FD="NodeID" page="0"/}" ShowNum="30" /}
+<li class="active">正文</li>
+</ul>
+</div><!--面包屑导航结束 -->
+<div class="myContent_l">
+<h1>{SField sid="文章模型数据源标签" FD="Title" page="0"/}</h1>
+
+<div class="myAbbr">
+<span>发布时间：{ZL:FormatDate({SField sid="文章模型数据源标签" FD="CreateTime" page="0"/},yyyy-MM-dd)/}</span> 
+<span>浏览次数：<SCRIPT language=javascript src="/Common/GetHits.aspx?id={SField sid="文章模型数据源标签" FD="GeneralID" page="0"/}"></SCRIPT></span>
+<span>责任编辑：{SField sid="文章模型数据源标签" FD="Edit" page="0"/}</span>
+</div>
+{#PageCode}
+<div class="myContent">{SField sid="文章模型数据源标签" FD="content" page="{SField sid="文章模型数据源标签" FD="K_pages" page="0"/}"/}</div>
+{/#PageCode}
+
+<div class="content_read hidden-xs">
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<span id="asc">上一篇文章：{ZL.Label id="上一篇文章" NodeID="{SField sid="文章模型数据源标签" FD="NodeID" page="0"/}" /}</span>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<span id="desc">下一篇文章：{ZL.Label id="下一篇文章" NodeID="{SField sid="文章模型数据源标签" FD="NodeID" page="0"/}" /}</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="visible-xs">
+{ZL.Label id="淘吧微信底部"/}
+{ZL.Label id="微信弹出菜单"/}
+</div>
+
+<div class="hidden-xs">
+{ZL.Label id="全站底部"/}
+</div>
+</body>
+</html>
+<script type="text/javascript" src="/JS/Controls/ZL_Dialog.js"></script>
+<script>
+var buser = new B_User();//会员ajax登录状态需要结合JS/Controls/B_User.js引用同步生效
+buser.IsLogged(function(data,flag){
+	if(flag)
+	{
+		data=JSON.parse(data);
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").remove();
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").remove();
+		var namestr=data.UserName;
+		if(namestr.length>5)
+			namestr=namestr.substring(0,5)+"...";
+		$("#home_nav .navbar-nav.navbar-right").prepend("<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">欢迎您，"+namestr+" <span class=\"caret\"></span></a><ul class=\"dropdown-menu\" role=\"menu\"><li><a href=\"/User/Default.aspx\"><i class=\"fa fa-user\"></i> 会员中心</a></li><li><a href=\"/User/Order/OrderList.aspx\"><i class=\"fa fa-shopping-cart\"></i> 我的订单</a></li><li><a href=\"/User/Info/ConsumeDetail.aspx?SType=3\"><i class=\"fa fa-database\"></i> 我的积分</a></li><li><a href=\"javascript:;\" onclick=\"LogoutFun();\"><i class=\"fa fa-power-off\"></i> 安全退出</a></li></ul></li>");
+
+	}
+	else
+	{
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").show();
+		$("#home_nav .navbar-nav.navbar-right li:eq(1)").show();	
+	}
+});
+function LogoutFun()
+{
+	buser.Logout(function(){location=location;});
+}
+$(function(){
+	//menu float
+	var menufloatclicknumber=0;
+	function menufloatin(){
+		$(".menu-c").removeClass("out");
+		$("#menufloat").addClass("show")
+		$(".mask_menu").fadeIn();
+		$("#menufloat-c").show();
+		$(".menu-c-inner").removeClass("outer");
+		$(".menu-c-inner").addClass("in")
+		$(".menu-c-inner a").show();
+		menufloatclicknumber=1;
+	}
+	function menufloatout(){
+		$("#menufloat").removeClass("show")
+		$(".mask_menu").fadeOut();
+		$(".menu-c-inner").removeClass("in")
+		$(".menu-c-inner").addClass("outer")
+		$(".menu-c-inner a").hide();
+		$(".menu-c").addClass("out");
+		menufloatclicknumber=0;		
+	}	   
+	$("#menufloat").click(function(){
+		if(menufloatclicknumber==0){ menufloatin(); }
+		else { menufloatout();}			 	
+	})
+	$(".mask_menu").click(function(){
+		menufloatout(); 
+	})
+});
+</script>

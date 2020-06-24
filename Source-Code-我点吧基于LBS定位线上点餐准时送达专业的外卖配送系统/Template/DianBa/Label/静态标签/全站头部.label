@@ -1,0 +1,81 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>293</LabelID>
+    <LabelName>全站头部</LabelName>
+    <LabelType>1</LabelType>
+    <LabelCate>静态标签</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable />
+    <LabelField />
+    <LabelWhere />
+    <LabelOrder />
+    <LabelContent>&lt;div class="relative"&gt;
+&lt;nav class="navbar navbar-default home_nav navbar-fixed-top" id="home_nav"&gt;
+&lt;div class="container"&gt;
+&lt;!-- Brand and toggle get grouped for better mobile display --&gt;
+&lt;div class="navbar-header"&gt;
+  &lt;a class="navbar-brand" href="/"&gt;&lt;embed pluginspage="http://www.adobe.com/svg/viewer/install/" src="{$CssDir/}images/logo.svg" type="image/svg+xml" /&gt;&lt;/a&gt;
+&lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"&gt;
+&lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+&lt;span class="icon-bar"&gt;&lt;/span&gt;
+&lt;span class="icon-bar"&gt;&lt;/span&gt;
+&lt;span class="icon-bar"&gt;&lt;/span&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Collect the nav links, forms, and other content for toggling --&gt;
+&lt;div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"&gt;
+&lt;ul class="nav navbar-nav nav_list"&gt;
+&lt;li&gt;&lt;a href="/"&gt;首页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(2)/}?ProClass=2"&gt;点餐&lt;/a&gt;&lt;/li&gt; 
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(31)/}"&gt;饭券&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(2)/}?ProClass=2"&gt;企业用餐&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/Ask/" target="_blank"&gt;问答&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(14)/}"&gt;加盟&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="nav navbar-nav navbar-right"&gt;
+&lt;li style="display:none;"&gt;&lt;a href="/User/Login.aspx"&gt;登录&lt;/a&gt;&lt;/li&gt;
+&lt;li style="display:none;"&gt;&lt;a href="/User/Register.aspx"&gt;注册&lt;/a&gt;&lt;/li&gt; 
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(61)/}" target="_blank"&gt;商家平台&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(57)/}" target="_blank"&gt;淘吧&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="top_search"&gt;
+&lt;form class="navbar-form navbar-right" role="search" action="/Search/SearchList.aspx" method="get" target="_blank" style="position:relative; margin-top:22px;"&gt;
+&lt;div class="form-group"&gt;
+&lt;input name="KeyWord" class="form-control" type="text"  placeholder="全站搜索" style="width:150px"&gt;
+&lt;/div&gt;
+&lt;button class="btn btn-default" type="submit" style="position: absolute; top: -3px;right: 5px; font-size:1.5em;border: none; background: none; color: #ff9d00;"&gt;&lt;i class="fa fa-search"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- /.navbar-collapse --&gt;
+&lt;/div&gt;&lt;!-- /.container-fluid --&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+&lt;div class="kefu"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="tel:0791-83836116"&gt;&lt;span&gt;联系我们&lt;/span&gt;&lt;i class="fa fa-phone"&gt;&lt;/i&gt;&lt;/a&gt;&lt;div class="clearfix"&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1010187437&amp;site=qq&amp;menu=yes" target="_blank"&gt;&lt;span&gt;在线客服&lt;/span&gt;&lt;i class="fa  fa-qq"&gt;&lt;/i&gt;&lt;/a&gt;&lt;div class="clearfix"&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li class="kefu_qrcode"&gt;&lt;a href="javascript:;"&gt;&lt;span&gt;&lt;img src="{$CssDir/}images/weixin.jpg" width="155" alt="微信二维码" /&gt;&lt;/span&gt;&lt;i class="fa fa-qrcode"&gt;&lt;/i&gt;&lt;/a&gt;&lt;div class="clearfix"&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://user.qzone.qq.com/371194375" target="_blank"&gt;&lt;span&gt;新浪微博&lt;/span&gt;&lt;i class="fa fa-weibo"&gt;&lt;/i&gt;&lt;/a&gt;&lt;div class="clearfix"&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</LabelContent>
+    <LabelCount />
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

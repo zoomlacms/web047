@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>341</LabelID>
+    <LabelName>输出指定商品分类列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam>UserShopID,,1,店铺ID|ProClass,,1,商品分类</LabelParam>
+    <LabelTable>ZL_Node</LabelTable>
+    <LabelField>NodeID,NodeName,NodePicUrl</LabelField>
+    <LabelWhere>NodeID in (select Nodeid from ZL_Commodities where UserShopID='@UserShopID' And UserShopID&gt;0 And Sales=1 And Istrue=1 And Recycler=0 And ProClass='@ProClass')</LabelWhere>
+    <LabelOrder>ZL_Node.OrderID ASC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;&lt;a data-node="{Field="NodeName"/}" href="{ZL:GetLastinfo(1)/}?n={$GetUrlencode({Field="NodeName"/})$}&amp;sid=@UserShopID&amp;ProClass=@ProClass"&gt;&lt;span style="background-image:url({Field="NodePicUrl"/}); background-size:28px 28px;"&gt;&lt;/span&gt;{Field="NodeName"/}&lt;/a&gt;&lt;/li&gt;{/Repeate}</LabelContent>
+    <LabelCount />
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

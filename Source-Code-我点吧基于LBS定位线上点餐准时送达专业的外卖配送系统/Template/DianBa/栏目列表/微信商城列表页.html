@@ -1,0 +1,360 @@
+﻿{ZL.Source id="节点栏目信息数据源"/}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="节点栏目信息数据源" FD="NodeName" page="0"/}</title>
+<meta name="Keywords" content="{SField sid="节点栏目信息数据源" FD="Meta_Keywords" page="0"/}" />
+<meta name="description" content="{SField sid="节点栏目信息数据源" FD="Meta_Description" page="0"/}" />
+{ZL:Boot()/}
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script src="{$CssDir/}js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ynCD23qRFoyWBYk0M3bF1VEk"></script>
+<script type="text/javascript" src="/JS/Modal/APIResult.js"></script>
+<script src="/JS/Controls/B_User.js"></script>
+</head>
+<body>
+<div class="hidden-xs">
+{ZL.Label id="全站头部"/}
+<div class="men_banner">
+{ZL.Label id="输出指定门店名称" GeneralID="{$GetRequest(sid)$}" /}
+</div>
+</div>
+
+<div class="visible-xs">
+<nav class="navbar navbar-default navbar-fixed-top" id="wei_nav">
+<div class="container-fluid">
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="{ZL:GetNodeLinkUrl(2)/}"><h3>{ZL.Label id="输出指定门店名称" GeneralID="{$GetRequest(sid)$}" /}</h3></a>
+</div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+<ul class="nav navbar-nav" style="margin-bottom:0;">
+{ZL.Label id="获取门店名称列表" ShowNum="10" /}
+<li><a href="/Class_2/Default.aspx?ProClass={$GetRequest(ProClass)$}" class="text-center btn btn-warning btn-sm" style="font-size:1em;">查看更多门店</a></li>
+</ul>
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+<div style="height:50px;"></div>
+</div>
+
+<div class="container">
+<div class="mobile_class" style="margin-top:10px;">
+<ul>
+{ZL.Label id="输出指定商品分类列表" UserShopID="{$GetRequest(sid)$}" ProClass="{$GetRequest(ProClass)$}" /}
+<div class="clearfix"></div>
+</ul>
+</div>
+<div class="alert alert-info shop_alert" role="alert" style="display:none;">
+{ZL.Label id="输出所属商家信息" GeneralID="{$GetRequest(sid)$}" /}
+</div>
+</div>
+
+
+<div class="mobile_food container">
+<div class="row">
+
+<div class="mobile_food_b"><i class="fa fa-spinner fa-spin"></i></div>
+</div>
+</div>
+
+<div class="mobile_cart"><a href="/Cart/Cart1.aspx?appid=2&ProClass={$GetRequest(ProClass)$}&remark="><i class="fa fa-shopping-cart"></i><span>(<i class="fa fa-spinner fa-spin"></i>)</span></a></div>
+
+<div class="visible-xs">
+{ZL.Label id="订餐微信底部"/}
+{ZL.Label id="微信弹出菜单"/}
+</div>
+<div class="closed_div" style="display:none;">
+<p>已经打佯，请于每天8点-20点来点餐，我们会员商城更精彩哦!</p>
+<a href="#" class="btn btn-danger">点击进入</a>
+</div>
+<div class="modal-backdrop fade in" style="display:none;" id="closed_body"></div>
+
+<div class="hidden-xs">
+{ZL.Label id="全站底部"/}
+</div>
+</body>
+</html>
+<script>
+var dtype=0;
+var gid='{ZL.Label id="获取当前登录会员组ID" /}';
+var cp=1;
+var para = {
+	key:'',
+	alias:'usernodeprolist',
+	psize:'10',
+	cpage:cp,
+	nodename:'{$GetUrldecode({$GetRequest(n)$})$}',
+	proclass:'{$GetRequest(ProClass)$}',
+	usershopid:'{$GetRequest(sid)$}'
+}
+$.post("/API/Center.ashx?action=GetCustom",para,function(data){
+	data=JSON.parse(data);
+	var str="";
+	if(data.retcode=="1")
+	{
+		data=JSON.parse(data.result);
+		if(data.length==0)
+			$(".mobile_food_b").html("暂无更多商品...");
+		else
+		{
+			for(i=0;i<data.length;i++)
+			{
+				if(para.proclass=="2"&&dtype==1)
+					str+="<div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-12\"><div class=\"mobile_food_c\"><a href=\"/shop/"+data[i].id+".aspx?remark={$GetRequest(remark)$}\"><img src=\"/UploadFiles/"+data[i].thumbnails+"\" alt=\""+data.proname+"\" /></a><div class=\"mobile_food_cb\"><h3><a href=\"/shop/"+data[i].id+".aspx?remark={$GetRequest(remark)$}\">"+data[i].proname+"</a><span>"+data[i].storename+"</span></h3><p><span style=\"\">月售"+data[i].ys+"份</span><span><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i></span><span>原价￥"+parseFloat(data[i].linprice).toFixed(2)+"</span> <span>会员价￥"+GetPrice(data[i].userprice)+"元/份</span></p></div></div></div>";	
+				else
+					str+="<div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-12\"><div class=\"mobile_food_c\"><a href=\"/shop/"+data[i].id+".aspx?remark={$GetRequest(remark)$}\"><img src=\"/UploadFiles/"+data[i].thumbnails+"\" alt=\""+data.proname+"\" /></a><div class=\"mobile_food_cb\"><h3><a href=\"/shop/"+data[i].id+".aspx?remark={$GetRequest(remark)$}\">"+data[i].proname+"</a><span>"+data[i].storename+"</span></h3><p><span style=\"\">月售"+data[i].ys+"份</span><span><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i></span><span>原价￥"+parseFloat(data[i].linprice).toFixed(2)+"</span> <span>会员价￥"+GetPrice(data[i].userprice)+"元/份</span></p></div><div class=\"mobile_food_cd\"><div class=\"col-xs-6 padding5\"><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"AddToGoCart('"+data[i].id+"');\">立即购买</button></div><div class=\"col-xs-6 padding5\"><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"AddToCart(this,'"+data[i].id+"');\">加入购物车</button></div><div class=\"clearfix\"></div></div></div></div>";
+			}
+			$(".mobile_food_b").html("暂无更多商品...");
+			$(".mobile_food_b").before(str);
+		}
+	}
+})
+$(window).scroll(function(){
+	if($(window).scrollTop() >= $(document).height() - $(window).height())
+	{
+		para.cpage++;
+		$.post("/API/Center.ashx?action=GetCustom",para,function(data){
+			data=JSON.parse(data);
+			var str="";
+			if(data.retcode=="1")
+			{
+				data=JSON.parse(data.result)
+				if(data.length>0)
+				{
+					for(i=0;i<data.length;i++)
+					{
+						if(para.proclass=="2"&&dtype==1)
+							str+="<div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-12\"><div class=\"mobile_food_c\"><a href=\"/shop/"+data[i].id+".aspx?remark={$GetRequest(remark)$}\"><img src=\"/UploadFiles/"+data[i].thumbnails+"\" alt=\""+data.proname+"\" /></a><div class=\"mobile_food_cb\"><h3><a href=\"/shop/"+data[i].id+".aspx?remark={$GetRequest(remark)$}\">"+data[i].proname+"</a><span>"+data[i].storename+"</span></h3><p><span style=\"\">月售"+data[i].ys+"份</span><span><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i></span><span>原价￥"+parseFloat(data[i].linprice).toFixed(2)+"</span> <span>会员价￥"+GetPrice(data[i].userprice)+"元/份</span></p></div></div></div>";
+						else
+							str+="<div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-12\"><div class=\"mobile_food_c\"><a href=\"/shop/"+data[i].id+".aspx?remark={$GetRequest(remark)$}\"><img src=\"/UploadFiles/"+data[i].thumbnails+"\" alt=\""+data.proname+"\" /></a><div class=\"mobile_food_cb\"><h3><a href=\"/shop/"+data[i].id+".aspx?remark={$GetRequest(remark)$}\">"+data[i].proname+"</a><span>"+data[i].storename+"</span></h3><p><span style=\"\">月售"+data[i].ys+"份</span><span><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i></span><span>原价￥"+parseFloat(data[i].linprice).toFixed(2)+"</span> <span>会员价￥"+GetPrice(data[i].userprice)+"元/份</span></p></div><div class=\"mobile_food_cd\"><div class=\"col-xs-6 padding5\"><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"AddToGoCart('"+data[i].id+"');\">立即购买</button></div><div class=\"col-xs-6 padding5\"><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"AddToCart(this,'"+data[i].id+"');\">加入购物车</button></div><div class=\"clearfix\"></div></div></div></div>";
+					}
+					$(".mobile_food_b").before(str);
+				}
+				else
+				{
+					$(".mobile_food_b").html("暂无更多商品...")
+				}
+			}			
+		});
+	}
+});
+$().ready(function(e) {
+	$(".mobile_class a[data-node='{$GetUrldecode({$GetRequest(n)$})$}']").addClass("active");
+	$("#node{SField sid="节点栏目信息数据源" FD="NodeID" page="0"/}").addClass("active");
+	var closed='{ZL.Label id="打烊状态"/}';
+	if(closed=="1")
+	{
+		$("#closed_body").show();
+		$(".closed_div").show().css("margin-top","-"+($(".closed_div").height()/2)+"px");
+		$("html").css("height","100%").css("overflow","hidden");
+		$("body").css("height","100%").css("overflow","hidden");
+	}
+	else
+	{
+		$("#closed_body").remove();
+		$(".closed_div").remove();
+	}
+	var pronum=0;
+	$.post("/API/mod/shop_cart.ashx?&action=list&proclass={$GetRequest(ProClass)$}",function(data){
+		data=JSON.parse(data);
+		if(data.retcode=="1")
+		{
+			data=JSON.parse(data.result);
+			for(i=0;i<data.length;i++)
+			{
+				pronum+=parseInt(data[i].Pronum);	
+			}
+			$(".mobile_cart a span").html("("+pronum+")")
+		}
+	});
+});
+function AddToCart(obj,proid)
+{
+	var pronum=0;
+	$(obj).attr("disabled","disabled");
+	$(obj).html("<i class=\"fa fa-spinner fa-spin\"></i> 正在加入");
+	$.post("/API/mod/shop_cart.ashx?&action=add&proclass={$GetRequest(ProClass)$}&proid="+proid,function(data){
+		data=JSON.parse(data);
+		if(data.retcode=="1")
+		{
+			data=JSON.parse(data.result);
+			for(i=0;i<data.length;i++)
+			{
+				pronum+=parseInt(data[i].Pronum);	
+			}
+			$(".mobile_cart a span").html("("+pronum+")")
+		}
+	});
+	setTimeout(function(){
+		$(obj).removeAttr("disabled");
+		$(obj).html("加入购物车");
+	},1000);
+	var cart = $('.mobile_cart');
+	var imgtodrag = $(obj).parent().parent().parent().find('img').eq(0);
+	if (imgtodrag) {
+		var imgclone = imgtodrag.clone().offset({
+			top: imgtodrag.offset().top,
+			left: imgtodrag.offset().left
+		}).css({
+			'opacity': '1',
+			'position': 'absolute',
+			'height': '50px',
+			'width': '50px',
+			'z-index': '100',
+			'padding':'0',
+			'border':'none',
+			'border-radius':'50px'
+		}).appendTo($('body')).animate({
+			'top': cart.offset().top,
+			'left': cart.offset().left,
+			'width': 50,
+			'height': 50
+		}, 1000, 'easeInOutExpo');
+		setTimeout(function () {
+			cart.effect('shake', { times: 2 }, 200);
+		}, 1500);
+		imgclone.animate({
+			'width': 50,
+			'height': 50
+		}, function () {
+			$(this).detach();
+		});
+	}
+}
+
+var buser = new B_User();//会员ajax登录状态需要结合JS/Controls/B_User.js引用同步生效
+buser.IsLogged(function(data,flag){
+	if(flag)
+	{
+		data=JSON.parse(data);
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").remove();
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").remove();
+		var namestr=data.UserName;
+		if(namestr.length>5)
+			namestr=namestr.substring(0,5)+"...";
+		$("#home_nav .navbar-nav.navbar-right").prepend("<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">欢迎您，"+namestr+" <span class=\"caret\"></span></a><ul class=\"dropdown-menu\" role=\"menu\"><li><a href=\"/User/Default.aspx\"><i class=\"fa fa-user\"></i> 会员中心</a></li><li><a href=\"/User/Order/OrderList.aspx\"><i class=\"fa fa-shopping-cart\"></i> 我的订单</a></li><li><a href=\"/User/Info/ConsumeDetail.aspx?SType=3\"><i class=\"fa fa-database\"></i> 我的积分</a></li><li><a href=\"javascript:;\" onclick=\"LogoutFun();\"><i class=\"fa fa-power-off\"></i> 安全退出</a></li></ul></li>");
+
+	}
+	else
+	{
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").show();
+		$("#home_nav .navbar-nav.navbar-right li:eq(1)").show();	
+	}
+});
+function LogoutFun()
+{
+	buser.Logout(function(){location=location;});
+}
+
+var geoc = new BMap.Geocoder();  
+var map = new BMap.Map();
+var geolocation = new BMap.Geolocation();
+geolocation.getCurrentPosition(function(r){
+	if(this.getStatus() == BMAP_STATUS_SUCCESS)
+	{
+		var mypoint = new BMap.Point(r.point.lng,r.point.lat);
+		para.lng=r.point.lng;
+		para.lat=r.point.lat;
+
+		var pstr=$(".shop_alert p").data("map");
+		if(pstr!="")
+		{
+			pstr=pstr.split(',');
+			var point = new BMap.Point(pstr[0],pstr[1]);
+
+			if('{$GetRequest(ProClass)$}'=="2")
+			{
+				$(".shop_alert").show();
+				var d = map.getDistance(mypoint,point).toFixed(2);
+				$("#dist_span").html("<font color='red'>"+d+"</font>米");
+				var dist=parseInt('{ZL.Label id="获取指定店铺的外送距离" GeneralID="{$GetRequest(sid)$}" /}');
+				if(d>dist)
+				{
+					dtype=1;
+					$(".mobile_food_cd").remove();
+					$("#ding_span").html("该门店的配送距离为<font color='red'>"+dist+"</font>米，您已超出配送距离！");
+				}
+				else
+				{
+					
+					var t1=parseFloat(d/10000).toFixed(2);
+					if(t1<0.16)
+						t1=1/6;
+					var t2=((t1-parseInt(t1))*60).toFixed();
+					if(parseInt(t1)==0)
+						$("#minu_span").html(t2+"分钟")
+					else
+						$("#minu_span").html(parseInt(t1)+"小时"+t2+"分钟")
+				}
+			}
+			else
+			{
+				$(".shop_alert p").remove();
+			}
+		}
+	}
+});
+function AddToGoCart(proid)
+{
+	$.post("/API/mod/shop_cart.ashx?&action=add&proclass={$GetRequest(ProClass)$}&proid="+proid,function(data){
+		data=JSON.parse(data);
+		if(data.retcode=="1")
+		{
+			window.location.href="/Cart/Cart1.aspx?appid=2&ProClass={$GetRequest(ProClass)$}";
+		}
+	});
+}
+function GetPrice(userprice,linprice)
+{
+	var str=parseFloat(linprice).toFixed(2);
+	var userprice=JSON.parse(userprice);
+	for(j=0;j<userprice.length;j++)
+	{
+		if(userprice[j].gid==gid)
+		{
+			str=parseFloat(userprice[j].price).toFixed(2);
+			break;
+		}
+	}
+	return str;
+}
+$(function(){
+	//menu float
+	var menufloatclicknumber=0;
+	function menufloatin(){
+		$(".menu-c").removeClass("out");
+		$("#menufloat").addClass("show")
+		$(".mask_menu").fadeIn();
+		$("#menufloat-c").show();
+		$(".menu-c-inner").removeClass("outer");
+		$(".menu-c-inner").addClass("in")
+		$(".menu-c-inner a").show();
+		menufloatclicknumber=1;
+	}
+	function menufloatout(){
+		$("#menufloat").removeClass("show")
+		$(".mask_menu").fadeOut();
+		$(".menu-c-inner").removeClass("in")
+		$(".menu-c-inner").addClass("outer")
+		$(".menu-c-inner a").hide();
+		$(".menu-c").addClass("out");
+		menufloatclicknumber=0;		
+	}	   
+	$("#menufloat").click(function(){
+		if(menufloatclicknumber==0){ menufloatin(); }
+		else { menufloatout();}			 	
+	})
+	$(".mask_menu").click(function(){
+		menufloatout(); 
+	})
+});
+</script>

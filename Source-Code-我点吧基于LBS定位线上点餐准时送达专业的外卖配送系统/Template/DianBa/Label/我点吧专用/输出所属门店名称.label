@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>322</LabelID>
+    <LabelName>输出所属门店名称</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam>UserName,,1,用户名</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_C_mdmx ON ZL_CommonModel.ItemID=ZL_C_mdmx.ID</LabelTable>
+    <LabelField>ZL_CommonModel.Title</LabelField>
+    <LabelWhere>(NodeID=2 or FirstNodeID=2) And status=99 And Inputer='@UserName'</LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>{Field="Title"/}</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

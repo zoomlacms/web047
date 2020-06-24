@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>309</LabelID>
+    <LabelName>输出所属商家信息</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam>GeneralID,,1,店铺ID</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_Store_reg ON ZL_CommonModel.ItemID=ZL_Store_reg.ID</LabelTable>
+    <LabelField>ZL_CommonModel.GeneralID,ZL_Store_reg.bdmap,ZL_Store_reg.spdy,ZL_Store_reg.StoreName</LabelField>
+    <LabelWhere>GeneralID='@GeneralID'</LabelWhere>
+    <LabelOrder />
+    <LabelContent>&lt;p data-map="{Field="bdmap"/}" data-close="{Field="spdy"/}"&gt;本商品由&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}"&gt;{Field="StoreName"/}&lt;/a&gt;提供销售距离您&lt;span id="dist_span"&gt;&lt;i class="fa fa-spinner fa-spin"&gt;&lt;/i&gt;&lt;/span&gt;，&lt;span id="ding_span"&gt;需要耗时&lt;span id="minu_span"&gt;&lt;i class="fa fa-spinner fa-spin"&gt;&lt;/i&gt;&lt;/span&gt;送上门.&lt;/span&gt;&lt;/p&gt;</LabelContent>
+    <LabelCount />
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

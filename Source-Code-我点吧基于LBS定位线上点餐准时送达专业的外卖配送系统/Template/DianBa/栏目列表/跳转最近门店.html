@@ -1,0 +1,55 @@
+﻿{ZL.Source id="节点栏目信息数据源"/}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$SiteName/}</title>
+<meta name="Keywords" content="{SField sid="节点栏目信息数据源" FD="Meta_Keywords" page="0"/}" />
+<meta name="description" content="{SField sid="节点栏目信息数据源" FD="Meta_Description" page="0"/}" />
+{ZL:Boot()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ynCD23qRFoyWBYk0M3bF1VEk"></script>
+</head>
+<body class="shop_find">
+<div class="container">
+<h1>正在为您寻找最近的门店，请稍候...</h1>
+<div class="progress">
+<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+<span class="sr-only">45% Complete</span>
+</div>
+</div>
+</div>
+</body>
+</html>
+<script>
+var cpage=1;
+var para={
+	lng:'',
+	lat:'',
+	page:cpage,
+	psize:'1',
+	limit:0
+}
+var geoc = new BMap.Geocoder();  
+var map = new BMap.Map();
+var geolocation = new BMap.Geolocation();
+geolocation.getCurrentPosition(function(r){
+	if(this.getStatus() == BMAP_STATUS_SUCCESS)
+	{
+		var mypoint = new BMap.Point(r.point.lng,r.point.lat);
+		para.lng=r.point.lng;
+		para.lat=r.point.lat;
+		$.post('/API/nearby.ashx?action=mynear',para,function(data){
+			data=JSON.parse(data);
+			if(data.retcode=="1")
+			{
+				if(data.result!="")
+				{
+					data=JSON.parse(data.result);
+					window.location.href="/Item/"+data[0].gid+".aspx?ProClass={$GetRequest(ProClass)$}";
+				}
+			}
+		});
+	}
+});
+</script>

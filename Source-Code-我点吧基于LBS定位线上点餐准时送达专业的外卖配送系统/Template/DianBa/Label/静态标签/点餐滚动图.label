@@ -1,0 +1,47 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>355</LabelID>
+    <LabelName>点餐滚动图</LabelName>
+    <LabelType>1</LabelType>
+    <LabelCate>静态标签</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable />
+    <LabelField />
+    <LabelWhere />
+    <LabelOrder />
+    <LabelContent>&lt;div class="swiper-slide" style="background-image:url({$CssDir/}images/jiaozit1.jpg);"&gt;
+&lt;a href="{ZL:GetShopUrl(78)/}"&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="swiper-slide" style="background-image:url({$CssDir/}images/jiaozit2.jpg);"&gt;
+&lt;a href="{ZL:GetShopUrl(66)/}"&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="swiper-slide" style="background-image:url({$CssDir/}images/jiaozit3.jpg);"&gt;
+&lt;a href="{ZL:GetShopUrl(64)/}"&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="swiper-slide" style="background-image:url({$CssDir/}images/jiaozit4.jpg);"&gt;
+&lt;a href="{ZL:GetShopUrl(65)/}"&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="swiper-slide" style="background-image:url({$CssDir/}images/jiaozit5.jpg);"&gt;
+&lt;a href="{ZL:GetShopUrl(67)/}"&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="swiper-slide" style="background-image:url({$CssDir/}images/jiaozit6.jpg);"&gt;
+&lt;a href="{ZL:GetShopUrl(79)/}"&gt;&lt;/a&gt;
+&lt;/div&gt;</LabelContent>
+    <LabelCount />
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

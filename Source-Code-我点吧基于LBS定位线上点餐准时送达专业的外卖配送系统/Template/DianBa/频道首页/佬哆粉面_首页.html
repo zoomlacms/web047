@@ -1,0 +1,55 @@
+﻿{ZL.Source id="节点栏目信息数据源"/}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="节点栏目信息数据源" FD="NodeName" page="0"/}_{$SiteName/}</title>
+<meta name="Keywords" content="{SField sid="节点栏目信息数据源" FD="Meta_Keywords" page="0"/}" />
+<meta name="description" content="{SField sid="节点栏目信息数据源" FD="Meta_Description" page="0"/}" />
+{ZL:Boot()/}
+<link href="/dist/css/animate.min.css" rel="stylesheet"/>
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="lao_body">
+<div class="container-fulid">
+<div class="home_btn"><a href="/"><i class="fa fa-home"></i></a></div>
+<div class="a1">
+<div class="show animated left">
+<i class="fa fa-leaf"></i>
+<h2>原料</h2>
+<p>良心精选鱼米之乡新鲜食材，员工家乡的食材，保证地道！</p>
+<a href="#" class="btn btn-success">产品图库</a>
+<a href="{ZL:GetInfoUrl(106)/}" class="btn btn-success">门店介绍</a>
+</div>
+</div>
+
+<div class="a2">
+<div class="show animated down">
+<span class="fa-stack fa-lg">
+  <i class="fa fa-square-o fa-stack-2x"></i>
+  <i class="fa fa-spoon fa-stack-1x"></i>
+</span>
+<h2>好粉</h2>
+<p>由国内顶尖厨师把关，贴心服务，用心做好每一道菜!</p>
+<a href="#" class="btn btn-success">好粉流程</a>
+</div>
+</div>
+
+<div class="a3">
+<div class="show animated right">
+<i class="fa fa-hand-spock-o"></i>
+<h2>手工</h2>
+<p>流程透明，注重每一道工艺，坚持创新，方便快速，顾客至上！</p>
+<div class="btn-group" role="group" aria-label="...">
+<a href="#" class="btn btn-default">店内环境</a>
+<a href="{ZL:GetNodeLinkUrl(14)/}" class="btn btn-default">加盟申请</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>332</LabelID>
+    <LabelName>后台获取门店列表</LabelName>
+    <LabelType>4</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam>ShowNum,10,1,显示数</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_Store_reg ON ZL_CommonModel.ItemID=ZL_Store_reg.ID</LabelTable>
+    <LabelField>ZL_CommonModel.GeneralID,ZL_Store_reg.address,ZL_Store_reg.major,ZL_Store_reg.phone,ZL_Store_reg.StoreName,ZL_Store_reg.UserID,ZL_Store_reg.UserName</LabelField>
+    <LabelWhere>ModelID=24 And Status=99</LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>&lt;table class="table table-bordered"&gt;
+&lt;tr&gt;
+&lt;th&gt;门店号&lt;/th&gt;
+&lt;th&gt;门店名称&lt;/th&gt;
+&lt;th&gt;店主&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;th&gt;主营&lt;/th&gt;
+&lt;th&gt;联系电话&lt;/th&gt;
+&lt;th&gt;今日订单&lt;/th&gt;
+&lt;th&gt;今日营业额&lt;/th&gt;
+&lt;th&gt;全部订单&lt;/th&gt;
+&lt;th&gt;全部营业额&lt;/th&gt;
+&lt;/tr&gt;
+{Repeate}
+&lt;tr&gt;
+&lt;td&gt;{Field="GeneralID"/}&lt;/td&gt;
+&lt;td&gt;{Field="StoreName"/}&lt;/td&gt;
+&lt;td&gt;{Field="StoreName"/}&lt;/td&gt;
+&lt;td&gt;{Field="address"/}&lt;/td&gt;
+&lt;td&gt;{Field="major"/}&lt;/td&gt;
+&lt;td&gt;{Field="phone"/}&lt;/td&gt;
+&lt;td&gt;&lt;a href="/Admin/Shop/OrderList.aspx?StoreID={Field="GeneralID"/}"&gt;{ZL.Label id="获取指定门店今日订单总数" GID="{Field="GeneralID"/}" /}&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="/Admin/Shop/OrderList.aspx?StoreID={Field="GeneralID"/}"&gt;{ZL.Label id="获取指定门店今日消费总额" GID="{Field="GeneralID"/}" /}&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="/Admin/Shop/OrderList.aspx?StoreID={Field="GeneralID"/}"&gt;{ZL.Label id="获取指定门店全部订单总数" GID="{Field="GeneralID"/}" /}&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="/Admin/Shop/OrderList.aspx?StoreID={Field="GeneralID"/}"&gt;{ZL.Label id="获取指定门店全部消费总额" GID="{Field="GeneralID"/}" /}&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;{/Repeate}
+&lt;tr&gt;
+&lt;td colspan="10"&gt;
+{ZL.Page id="大图标响应式列表分页"/}
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

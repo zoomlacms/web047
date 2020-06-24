@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<title>我点吧 _首页</title>
+{$MetaKeywords/}
+{$MetaDescription/}
+{ZL:Boot()/}
+<link href="{$CssDir/}global.css?v={ZL.Label id="前端样式版本号"/}" rel="stylesheet" />
+<script src="/js/scrolltopcontrol.js" type="text/javascript"></script>
+<script src="/JS/Controls/B_User.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top home_nav" id="home_nav">
+<div class="container">
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+<a class="navbar-brand" href="/"><embed pluginspage="http://www.adobe.com/svg/viewer/install/" src="{$CssDir/}images/logo.svg" type="image/svg+xml" /></a>
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav nav_list">
+<li><a href="/">首页</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(2)/}?ProClass=2">点餐</a></li> 
+<li><a href="{ZL:GetNodeLinkUrl(31)/}">饭券</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(2)/}?ProClass=2">企业用餐</a></li>
+<li><a href="/Ask/" target="_blank">问答</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(14)/}">加盟</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li style="display:none;"><a href="/User/Login.aspx">登录</a></li>
+<li style="display:none;"><a href="/User/Register.aspx">注册</a></li> 
+<li><a href="{ZL:GetNodeLinkUrl(61)/}" target="_blank">商家平台</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(57)/}" target="_blank">淘吧</a></li>
+</ul>
+<div class="top_search">
+<form class="navbar-form navbar-right" role="search" action="/Search/SearchList.aspx" method="get" target="_blank" style="position:relative; margin-top:22px;">
+<div class="form-group">
+<input name="KeyWord" class="form-control" type="text" placeholder="全站搜索" style="width:150px">
+</div>
+<button class="btn btn-default" type="submit" style="position: absolute; top: -3px;right: 5px; font-size:1.5em;border: none; background: none; color: #ff9d00;"><i class="fa fa-search"></i></button>
+</form>
+</div>
+</div>
+<!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
+</nav>
+
+<div class="home_right" style="width:0;">
+<div class="home_right_btn"><span><i class="fa fa-angle-left"></i></span></div>
+<div class="home_right_list">
+<ul>
+<li><a href="{ZL:GetNodeLinkUrl(22)/}" target="_blank"><img src="{$CssDir/}images/brand2.png" alt="最饭"/></a></li>
+<li><a href="{ZL:GetNodeLinkUrl(30)/}" target="_blank"><img src="{$CssDir/}images/brand3.png" alt="蔡先生"/></a></li>
+<li><a href="/"><img src="{$CssDir/}images/brand4.png" alt="佬哆"/></a></li>
+<li><a href="{ZL:GetShopUrl(25)/}"><img src="{$CssDir/}images/home_ad1.jpg" alt="佬哆"/></a></li>
+<li><a href="{ZL:GetShopUrl(23)/}"><img src="{$CssDir/}images/home_ad2.jpg" alt="佬哆"/></a></li>
+<li><a href="{ZL:GetShopUrl(22)/}"><img src="{$CssDir/}images/home_ad3.jpg" alt="佬哆"/></a></li>
+<li><a href="{ZL:GetShopUrl(24)/}"><img src="{$CssDir/}images/home_ad4.jpg" alt="佬哆"/></a></li>
+<li><a href="{ZL:GetShopUrl(15)/}"><img src="{$CssDir/}images/home_ad5.jpg" alt="佬哆"/></a></li>
+</ul>
+</div>
+</div>
+
+<div id="carousel-example-generic" class="carousel slide home_banner" data-ride="carousel">
+<!-- Indicators -->
+<ol class="carousel-indicators">
+<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+</ol>
+<!-- Wrapper for slides -->
+<div class="carousel-inner" role="listbox">
+<div class="item active home_banner1">
+<h1>精彩生活的开始</h1>
+<p><a href="#">立即注册为会员享受9折特惠>></a></p>
+<div class="carousel-caption">
+</div>
+</div>
+<div class="item home_banner2">
+<h1>缤纷生活，享受现在</h1>
+<p><a href="#">立即注册为会员享受9折特惠>></a></p>
+<div class="carousel-caption">
+</div>
+</div>
+<div class="item home_banner3">
+<h1>清新、淡雅、简约，您的生活可以更有诗意</h1>
+<p><a href="#">立即注册为会员享受9折特惠>></a></p>
+<div class="carousel-caption">
+</div>
+</div>
+</div>
+<!-- Controls -->
+<div class="container">
+<div class="home_search">
+<form class="navbar-form " role="search" action="/Search/SearchList.aspx" method="get" target="_blank">
+<div class="form-group">
+<div class="home_local"><i class="fa fa-map-marker"></i></div>
+<input class="form-control" type="text" name="keyword" placeholder="输入地点或美食名称快速预订"/>
+<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="home_theme">
+<div class="home_f_t">
+<div class="container">
+<!-- Nav tabs -->
+<a href="/"><img src="{$CssDir/}Images/order.png" alt="随手点样样都好吃"/></a>
+</div>
+</div>
+<div class="container">
+<div role="tabpanel">
+<!-- Nav tabs -->
+<div class="container">
+<div class="row">
+<ul class="nav nav-tabs home_f_l" role="tablist">
+<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">佬哆</a></li>
+<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">蔡先生</a></li>
+<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">最饭</a></li>
+</ul>
+
+</div>
+</div>
+<!-- Tab panes -->
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="home">
+<div class="wap_theme_a" id="wap_theme_a1">
+<div class="container">
+<div class="row">
+{ZL.Label id="首页输出商品标签" NodeID="97" TitleNum="30" ShowNum="6" /}
+</div>
+</div>
+<div class="wap_theme_b"><button class="btn btn-danger" onClick="GetModre('97');">加载更多</button></div>
+</div>
+</div>
+<div role="tabpanel" class="tab-pane" id="profile">
+<div class="wap_theme_a" id="wap_theme_a2">
+<div class="container">
+<div class="row">
+{ZL.Label id="首页输出商品标签" NodeID="98" TitleNum="30" ShowNum="6" /}
+</div>
+</div>
+<div class="wap_theme_b"><button class="btn btn-danger" onClick="GetModre('8');">加载更多</button></div>
+</div>
+</div>
+<div role="tabpanel" class="tab-pane" id="messages">
+<div class="wap_theme_a">
+<div class="container">
+<div class="row">
+{ZL.Label id="首页输出商品标签" NodeID="99" TitleNum="30" ShowNum="6" /}
+</div>
+</div>
+<div class="wap_theme_b"><button class="btn btn-danger" onClick="GetModre('99');">加载更多</button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!--wap_theme end-->
+
+
+<div class="home_ad">
+<div class="container">
+<div class="row">
+<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-md-offset-6 ">
+<p>每天，我们从健康起步。<br/><a href="{ZL:GetNodeLinkUrl(15)/}">加入江西最大的户外运动社区！</a></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="home_ad_list">
+<div class="container"> 
+<div class="row">
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 footer_l">
+<ul class="list-unstyled">
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+<span>我的生活我来点</span>
+<ul class="list-unstyled"> 
+<li>江西本土O2O领先品牌</li>
+<li>我们的所有外卖都是自主中央大厨房</li>
+<li>提前预定最高折扣5折</li>
+<li>南昌5大门店直送周边500米</li>
+<li>每天送出600份快餐值得信赖</li>
+</ul> 
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+<span>官方服务</span>
+<ul class="list-unstyled"> 
+<li><a href="/User/Register.aspx">会员注册</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(2)/}">搜索门店</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(14)/}">商家入驻</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(21)/}">企业用餐</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(25)/}" target="_blank">使用帮助</a></li>
+</ul> 
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+<span>主力品牌</span>
+<ul class="list-unstyled"> 
+<li><a href="{ZL:GetNodeLinkUrl(36)/}" target="_blank">佬哆</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(22)/}" target="_blank">最饭</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(30)/}" target="_blank">蔡先生</a></li> 
+</ul> 
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+<span>关于我们</span>
+<ul class="list-unstyled"> 
+<li><a href="{ZL:GetNodeLinkUrl(4)/}" target="_blank">关于公司</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(14)/}">加盟代理</a></li>
+<li><a href="{ZL:GetInfoUrl(20)/}" target="_blank">联系我们</a></li>
+<li><a href="{ZL:GetNodeLinkUrl(23)/}">官方新闻</a></li> 
+<li><a href="{ZL:GetNodeLinkUrl(15)/}">运动社区</a></li> 
+</ul> 
+</div>
+</ul>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 ad_r">
+<img src="{$CssDir/}images/weixin.jpg" class="img-responsive" width="200" alt="微信二维码" />
+</div>
+</div>
+</div>
+</div>
+
+<div class="home_footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6 home_footer_l">
+{$Copyright/}<a href="{ZL:GetInfoUrl(18)/}" target="_blank">版权申明</a><a href="{ZL:GetInfoUrl(19)/}"  target="_blank">品牌商标</a>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-md-offset-3 footer_r">
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footer_m">
+<b>关注我们</b>
+<ul>
+<li><a href="http://weibo.com/88888888/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank"><i class="fa fa-weibo"></i></a></li>
+<li><a href="http://wpa.qq.com/msgrd?v=3&uin=371194375&site=qq&menu=yes" target="_blank"><i class="fa fa-qq"></i></a></li>
+</ul>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<img src="{$CssDir/}Images/tel.png" alt=""/>
+<br/>
+<a href="tel:086-0791-83836116">086-0791-83836116</a><br/>
+周一至周日9:00-22:00
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="kefu">
+<ul>
+<li><a href="tel:0791-83836116"><span>联系我们</span><i class="fa fa-phone"></i></a><div class="clearfix"></div></li>
+<li><a href="http://wpa.qq.com/msgrd?v=3&uin=1010187437&site=qq&menu=yes" target="_blank"><span>在线客服</span><i class="fa  fa-qq"></i></a><div class="clearfix"></div></li>
+<li class="kefu_qrcode"><a href="javascript:;"><span><img src="{$CssDir/}images/weixin.jpg" width="155" alt="微信二维码" /></span><i class="fa fa-qrcode"></i></a><div class="clearfix"></div></li>
+<li><a href="http://user.qzone.qq.com/371194375" target="_blank"><span>新浪微博</span><i class="fa fa-weibo"></i></a><div class="clearfix"></div></li>
+</ul>
+</div>
+</body>
+</html>
+<script>
+var c1=1;
+var c2=1;
+var c3=1;
+function GetModre(node)
+{
+	var str="";
+	var opts={
+		action:'GetCustom',
+		key:'',
+		alias:'nodeidshoplist',
+		psize:6,
+		cpage:0,
+		nodeid:node
+	};
+	switch(node)
+	{
+		case "97":
+			c1++;	
+			opts.cpage=c1;
+			break;
+		case "98":
+			c2++;	
+			opts.cpage=c2;
+			break;
+		case "99":
+			c3++;	
+			opts.cpage=c3;
+			break;
+		default:
+		break;
+	}
+	$.post("/API/Center.ashx",opts,function(data){
+		data=JSON.parse(data);
+		if(data.retcode=="1")
+		{
+			data=JSON.parse(data.result)
+			if(data.length>0)
+			{
+				console.log(data)
+				for(i=0;i<data.length;i++)
+				{
+					str+="<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-6  padding10\"><a href=\"/Shop/"+data[i].id+".aspx\" title=\""+data[i].proname+"\"></a><div class=\"home_imgbox\"><a href=\"/Shop/"+data[i].id+".aspx\"><img class=\"home_bg\" src=\"/UploadFiles/"+data[i].thumbnails+"\" alt=\""+data[i].proname+"\"><img class=\"home_brand\" src=\"/Template/DianBa/style/images/logo2.png\" alt=\"brand2\" /><p>新会员<br>专享</p></a><a href=\"/Shop/"+data[i].id+".aspx\">"+data[i].proname+"</a><span>￥"+parseFloat(data[i].linprice).toFixed(2)+"元/份</span></div></div>";
+				}
+			}
+			else
+			{
+				alert("暂无跟多商品！");
+				//$("#wap_theme_a1 .wap_theme_b").remove();
+			}
+			if(node=="97")
+				$("#wap_theme_a1 .row").append(str);
+			else if(node=="98")
+				$("#wap_theme_a3 .row").append(str);
+			else if(node=="99")
+				$("#wap_theme_a2 .row").append(str);
+		}
+	});
+}
+$(".home_right_btn span").click(function(){
+	if($(".home_right").width()>0)
+	{
+		$(this).find("i").removeClass("fa-angle-right").addClass("fa-angle-left");
+		$(".home_right").animate({width:"0"});
+	}
+	else
+	{
+		$(this).find("i").removeClass("fa-angle-left").addClass("fa-angle-right");
+		$(".home_right").animate({width:"240px"});
+	}
+})
+var buser = new B_User();//会员ajax登录状态需要结合JS/Controls/B_User.js引用同步生效
+buser.IsLogged(function(data,flag){
+	if(flag)
+	{
+		data=JSON.parse(data);
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").remove();
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").remove();
+		var namestr=data.UserName;
+		if(namestr.length>5)
+			namestr=namestr.substring(0,5)+"...";
+		$("#home_nav .navbar-nav.navbar-right").prepend("<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">欢迎您，"+namestr+" <span class=\"caret\"></span></a><ul class=\"dropdown-menu\" role=\"menu\"><li><a href=\"/User/Default.aspx\"><i class=\"fa fa-user\"></i> 会员中心</a></li><li><a href=\"/User/Order/OrderList.aspx\"><i class=\"fa fa-shopping-cart\"></i> 我的订单</a></li><li><a href=\"/User/Info/ConsumeDetail.aspx?SType=3\"><i class=\"fa fa-database\"></i> 我的积分</a></li><li><a href=\"javascript:;\" onclick=\"LogoutFun();\"><i class=\"fa fa-power-off\"></i> 安全退出</a></li></ul></li>");
+
+	}
+	else
+	{
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").show();
+		$("#home_nav .navbar-nav.navbar-right li:eq(1)").show();	
+	}
+});
+function LogoutFun()
+{
+	buser.Logout(function(){location=location;});
+}
+</script>

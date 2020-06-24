@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>86</LabelID>
+    <LabelName>商城商品标签_分页V3</LabelName>
+    <LabelType>4</LabelType>
+    <LabelCate>商城</LabelCate>
+    <LabelDesc />
+    <LabelParam>NodeID,0,1,节点ID|TitleNum,30,1,标题长度|ShowNum,20,1,每页显示数|ClassName,,1,自定类名</LabelParam>
+    <LabelTable>ZL_Commodities LEFT JOIN ZL_P_Shop ON ZL_Commodities.ItemID=ZL_P_Shop.ID</LabelTable>
+    <LabelField>ZL_Commodities.ID,ZL_Commodities.LinPrice,ZL_Commodities.Proname,ZL_Commodities.Thumbnails,ZL_P_Shop.ys</LabelField>
+    <LabelWhere>(NodeID=@NodeID or FirstNodeID=@NodeID or NodeID in (select NodeID from ZL_Node where ParentID=@NodeID)) And Sales=1 And istrue=1 And Recycler=0</LabelWhere>
+    <LabelOrder>ZL_Commodities.AddTime DESC</LabelOrder>
+    <LabelContent>
+ {Repeate}
+&lt;div class="@ClassName"&gt;
+&lt;div class="shop_list_p"&gt;
+&lt;a href="{ZL:GetShopUrl({Field="ID"/})/}" title="{Field="Proname"/}"&gt;&lt;img class="img-responsive img-thumbnail" onerror="javascript:this.src='/Images/nopic.gif';" alt="{Field="Proname"/}" src="{ZL:GetPicUrl({Field="Thumbnails"/})/}"&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href="/Shop/35.aspx" target="_blank"&gt;{Field="Proname"/}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;月售：&lt;b&gt;{Field="ys"/}&lt;/b&gt;份&lt;/span&gt;&lt;span&gt;&lt;font class="red"&gt;￥{ZL:GetMoney({Field="LinPrice"/},2,1)/}&lt;/font&gt;元/份&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+{/Repeate}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{ZL.Page id="大图标响应式列表分页v3"/}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType>Zoomla6x</DataSourceType>
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

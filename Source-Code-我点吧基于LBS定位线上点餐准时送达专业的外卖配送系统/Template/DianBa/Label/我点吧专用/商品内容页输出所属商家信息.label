@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>305</LabelID>
+    <LabelName>商品内容页输出所属商家信息</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam>GeneralID,,1,店铺ID</LabelParam>
+    <LabelTable>ZL_CommonModel LEFT JOIN ZL_Store_reg ON ZL_CommonModel.ItemID=ZL_Store_reg.ID</LabelTable>
+    <LabelField>ZL_CommonModel.GeneralID,ZL_CommonModel.Title,ZL_Store_reg.address,ZL_Store_reg.delivery,ZL_Store_reg.establishment,ZL_Store_reg.pic,ZL_Store_reg.StoreName,ZL_Store_reg.phone</LabelField>
+    <LabelWhere>Status=99 And GeneralID=@GeneralID</LabelWhere>
+    <LabelOrder>ZL_CommonModel.CreateTime DESC</LabelOrder>
+    <LabelContent>&lt;div class="dian_box"&gt;
+&lt;a href="{ZL:GetInfoUrl({Field="GeneralID"/})/}"&gt;&lt;img src="{ZL:GetPicUrl({Field="pic"/})/}" onerror="javascript:this.src='/UploadFiles/nopic.gif';"   alt="{Field="StoreName"/}" /&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;供货商：&lt;span&gt;{Field="StoreName"/}&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;所在地址：&lt;span&gt;{Field="address"/}&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;外送范围：&lt;span&gt;{Field="delivery"/}&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;成立日期：&lt;span&gt;{ZL:FormatDate({Field="establishment"/},yy-MM-dd)/}&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;联系电话：&lt;span&gt;{Field="phone"/}&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</LabelContent>
+    <LabelCount>1</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

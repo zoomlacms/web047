@@ -1,0 +1,105 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>294</LabelID>
+    <LabelName>全站底部</LabelName>
+    <LabelType>1</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable />
+    <LabelField />
+    <LabelWhere />
+    <LabelOrder />
+    <LabelContent>&lt;div class="home_ad_list"&gt;
+&lt;div class="container"&gt; 
+&lt;div class="row"&gt;
+&lt;div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 footer_l"&gt;
+&lt;ul class="list-unstyled"&gt;
+&lt;div class="col-lg-4 col-md-4 col-sm-4 col-xs-6"&gt;
+&lt;span&gt;我的生活我来点&lt;/span&gt;
+&lt;ul class="list-unstyled"&gt; 
+&lt;li&gt;江西本土O2O领先品牌&lt;/li&gt;
+&lt;li&gt;我们的所有外卖都是自主中央大厨房&lt;/li&gt;
+&lt;li&gt;提前预定最高折扣5折&lt;/li&gt;
+&lt;li&gt;南昌5大门店直送周边500米&lt;/li&gt;
+&lt;li&gt;每天送出600份快餐值得信赖&lt;/li&gt;
+&lt;/ul&gt; 
+&lt;/div&gt;
+&lt;div class="col-lg-3 col-md-3 col-sm-3 col-xs-6"&gt;
+&lt;span&gt;官方服务&lt;/span&gt;
+&lt;ul class="list-unstyled"&gt; 
+&lt;li&gt;&lt;a href="/User/Register.aspx"&gt;会员注册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(2)/}"&gt;搜索门店&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(14)/}"&gt;商家入驻&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(21)/}"&gt;企业用餐&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(25)/}" target="_blank"&gt;使用帮助&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt; 
+&lt;/div&gt;
+&lt;div class="col-lg-3 col-md-3 col-sm-3 col-xs-6"&gt;
+&lt;span&gt;主力品牌&lt;/span&gt;
+&lt;ul class="list-unstyled"&gt; 
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(36)/}" target="_blank"&gt;佬哆&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(22)/}" target="_blank"&gt;最饭&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(30)/}" target="_blank"&gt;蔡先生&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;/div&gt;
+&lt;div class="col-lg-2 col-md-2 col-sm-2 col-xs-6"&gt;
+&lt;span&gt;关于我们&lt;/span&gt;
+&lt;ul class="list-unstyled"&gt; 
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(4)/}" target="_blank"&gt;关于公司&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(14)/}"&gt;加盟代理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetInfoUrl(20)/}"  target="_blank"&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(23)/}"&gt;官方新闻&lt;/a&gt;&lt;/li&gt; 
+&lt;li&gt;&lt;a href="{ZL:GetNodeLinkUrl(15)/}"&gt;运动社区&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;/div&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 ad_r"&gt;
+&lt;img src="{$CssDir/}images/code.png" class="img-responsive" alt="微信二维码"&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="home_footer"&gt;
+&lt;div class="container"&gt;
+&lt;div class="row"&gt;
+&lt;div class="col-lg-5 col-md-5 col-sm-5 col-xs-6 home_footer_l"&gt;
+{$Copyright/}&lt;a href="{ZL:GetInfoUrl(18)/}" target="_blank"&gt;版权申明&lt;/a&gt;&lt;a href="{ZL:GetInfoUrl(19)/}"  target="_blank"&gt;品牌商标&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-md-offset-3 footer_r"&gt;
+&lt;div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footer_m"&gt;
+&lt;b&gt;关注我们&lt;/b&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://weibo.com/88888888/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1"  target="_blank"&gt;&lt;i class="fa fa-weibo"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wpa.qq.com/msgrd?v=3&amp;uin=371194375&amp;site=qq&amp;menu=yes"  target="_blank"&gt;&lt;i class="fa fa-qq"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"&gt;
+&lt;img src="{$CssDir/}Images/tel.png" alt=""/&gt;
+&lt;br/&gt;
+&lt;a href="tel:086-0791-83836116"&gt;086-0791-83836116&lt;/a&gt;&lt;br/&gt;
+周一至周日9:00-22:00
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</LabelContent>
+    <LabelCount />
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

@@ -1,0 +1,62 @@
+﻿<div class="header"><label class="title">添加按钮</label></div>
+<div class="category-view">
+<div class="sections">
+<div class="section-wrapper live-comps">
+    <div class="section-header">
+        <div class="title-line"><div class="title">基础</div></div>
+    </div>
+    <div class="items">
+        <div class="domItem preset-item" data-type="mb_basic_cube"><a href="javascript:;">魔方导航</a></div>
+        <div class="domItem preset-item" data-type="mb_basic_twocolumn"><a href="javascript:;">两列式导航</a></div>
+        <!--<div class="domItem preset-item" data-type="mb_basic_content"><a href="javascript:;">图文展示</a></div>
+        <div class="domItem preset-item" data-type="mb_basic_notice"><a href="javascript:;">滚动公告</a></div>-->
+        <!--<div class="domItem preset-item" data-type="mb_basic_imgs"><a href="javascript:;">图册展示</a></div>
+        <div class="domItem preset-item" data-type="mb_basic_files"><a href="javascript:;">文件列表</a></div>-->
+        <div class="domItem preset-item" data-type="mb_basic_imgloop"><a href="javascript:;">轮播图</a></div>
+    </div>
+</div>
+</div>
+</div>
+<script>
+    function GetModel(item) {
+        var $item = $(item);
+        var model = { dataMod: { value: "" }, config: { type: "", compid: "", css: "onlysort", style: '' } };
+        model.config.type = $item.data("type");
+        var list = [];
+        switch (model.config.type) {
+            case "mb_basic_cube":
+                list.push({ icon: "fa fa-user", name: "服饰", bkcolor: { "background-color": "#fdc200" } });
+                list.push({ icon: "fa fa-shopping-bag", name: "日常", bkcolor: { "background-color": "#96a3fc" } });
+                list.push({ icon: "fa fa-mobile", name: "手机", bkcolor: { "background-color": "#f99161" } });
+                list.push({ icon: "fa fa-leaf", name: "体育", bkcolor: { "background-color": "#c697d8" } });
+                list.push({ icon: "fa fa-diamond", name: "珠宝", bkcolor: { "background-color": "#8fa5ad" } });
+                list.push({ icon: "fa fa-coffee", name: "美食", bkcolor: { "background-color": "#ed6492" } });
+                list.push({ icon: "fa fa-home", name: "旅游", bkcolor: { "background-color": "#54d0e3" } });
+                list.push({ icon: "fa fa-hotel", name: "酒店", bkcolor: { "background-color": "#fcbd15" } });
+                list.push({ icon: "fa fa-car", name: "出行", bkcolor: { "background-color": "#98ce5a" } });
+                model.dataMod.items = list;
+                break;
+            case "mb_basic_twocolumn":
+                list.push({ icon: "fa fa-home", desc: "关于我们<br />ABOUT US", bkcolor: { "background-color": "#FFA62E" } });
+                list.push({ icon: "fa fa-list", desc: "新闻资迅<br />NEWS", bkcolor: { "background-color": "#342D35" } });
+                list.push({ icon: "fa fa-map-signs", desc: "联系我们<br />CONTACT US", bkcolor: { "background-color": "#342D35" } });
+                list.push({ icon: "fa fa-th-large", desc: "产品中心<br />PRODUCT", bkcolor: { "background-color": "#005680" } });
+                list.push({ icon: "fa fa-phone", desc: "在线客户<br />ONLINE SERVICE", bkcolor: { "background-color": "#4C6673" } });
+                list.push({ icon: "fa fa-send-o", desc: "更多服务<br />MORE", bkcolor: { "background-color": "#23B5B4" } });
+                model.dataMod.items = list;
+                break;
+            case "mb_basic_content"://显示百度编辑器
+                break;
+            case "mb_basic_notice":
+                model.dataMod.value = "这是一篇滚动公告,右键单击修改";
+                break;
+            case "mb_basic_imgloop":
+                list.push({ name: "一号", tip: "", orderid: 1, url: "/design/res/Gallery/1.jpg", target: "", click: null, css: "active" });
+                list.push({ name: "二号", tip: "", orderid: 2, url: "/design/res/Gallery/2.jpg", target: "", click: null, css: "" });
+                list.push({ name: "三号", tip: "", orderid: 3, url: "/design/res/Gallery/4.jpg", target: "", click: null, css: "" });
+                model.dataMod.items = list;
+                break;
+        }
+        return model;
+    }
+</script>

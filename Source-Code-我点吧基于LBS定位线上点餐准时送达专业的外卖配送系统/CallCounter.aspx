@@ -1,0 +1,1 @@
+﻿<%@ page language="C#" autoeventwireup="true" inherits="CallCounter, App_Web_pb03k3rd" enableviewstatemac="false" enableEventValidation="false" viewStateEncryptionMode="Never" %>

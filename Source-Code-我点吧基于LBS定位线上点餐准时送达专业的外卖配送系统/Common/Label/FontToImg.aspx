@@ -1,0 +1,1 @@
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Common_Label_FontToImg, App_Web_txxocyiv" enableviewstate="false" enableEventValidation="false" viewStateEncryptionMode="Never" %>

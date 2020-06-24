@@ -1,0 +1,148 @@
+{ZL.Source id="节点栏目信息数据源"/}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="节点栏目信息数据源" FD="NodeName" page="0"/}</title>
+<meta name="Keywords" content="{SField sid="节点栏目信息数据源" FD="Meta_Keywords" page="0"/}" />
+<meta name="description" content="{SField sid="节点栏目信息数据源" FD="Meta_Description" page="0"/}" />
+{ZL:Boot()/}
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<script src="/js/scrolltopcontrol.js" type="text/javascript"></script>
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<link href="{$CssDir/}swiper-3.3.1.min.css" rel="stylesheet" />
+<script src="{$CssDir/}js/swiper-3.3.1.jquery.min.js"></script>
+
+<style>
+.top-img { position: absolute; }
+.swiper-container { width: 100%; background: #fff; }
+.swiper-slide { display: block; width: 100%; margin-right: 0px; padding-top: 56.5%; background-repeat: no-repeat; background-size: cover; background-position: center; /* Center slide text vertically */ display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; }
+.swiper-slide a { display: block; width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; }
+.swiper-pagination-bullet { width: 8px; height: 2px; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; /*box-shadow: rgba(0,0,0,.5) 0 0 7px;*/ }
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet { margin: 0 3px; }
+
+</style>
+</head>
+<body>
+<div class="swiper-container">
+<div class="swiper-wrapper">
+{ZL.Label id="淘吧滚动图"/}
+</div>
+<!-- 如果需要分页器 -->
+<div class="swiper-pagination swiper-pagination-white"></div>
+</div>
+<div class="jifen_top">
+<ul>
+<li><a href="/User/Info/ConsumeDetail1.aspx?SType=3"><i class="fa fa-user"></i> 我的积分</a></li>
+<li><a href="/User/Order/OrderList1.aspx"><i class="fa fa-file-text"></i> 我的订单</a></li>
+<div class="clearfix"></div>
+</ul>
+</div>
+
+<div class="jifen_hlist">
+<div class="jifen_list_t" style="color:#ff7000;">限时抢购</div>
+<div class="jifen_list_c">
+<ul>
+{ZL.Label id="输出积分商城热卖商品列表" NodeID="57" TitleNum="30" ShowNum="100" /}
+<div class="clearfix"></div>
+</ul>
+</div>
+</div>
+
+{ZL.Label id="循环输出积分商城商品列表" NodeID="57" TitleNum="30" ShowNum="4" /}
+{ZL.Label id="微信弹出菜单"/}
+</body>
+</html>
+<script src="/JS/Controls/DateHelper.js"></script>
+<script>
+$(function() {
+    if ($('.swiper-slide').length <= 1) {
+        var mySwiper = new Swiper('.swiper-container', {
+            noSwiping: true,
+            noSwipingClass: 'stop-swiping',
+            autoplay: 0
+        });
+
+    } else {
+        var mySwiper = new Swiper('.swiper-container', {
+            //强制Swiper的宽度和高度，当你的Swiper在隐藏状态下初始化时才用得上
+            // width: $(document.body).width(),
+            //height: $(document.body).width() * 360 / 640,
+            // 前进后退按钮
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            // 需要分页器
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            /* paginationType: 'custom',*/
+            //
+            /*slidesPerView: 1,*/
+            /*spaceBetween: 30,*/
+            //自动切换时间
+            autoplay: 5000,
+            //用户操作图片之后，是否禁止autoplay
+            autoplayDisableOnInteraction: false,
+            //循环切换
+            loop: true,
+            //拖动时指针会变成抓手形状
+            grabCursor: true
+        });
+    }
+
+});
+//$(".jifen_list_c li p").each(function(index, element) {
+//    if($(this).data("price"))
+//	{
+//		$(this).html($(this).data("price").point+"积分")
+//	}
+//});
+
+$(function () {
+	ComputeTime();
+	setInterval(function () { ComputeTime(); }, 1000);
+})
+//倒计时
+function ComputeTime() {
+	$(".jifen_list_ct").each(function () {
+		var seconds = parseInt($(this).data("time") - 1);
+		var timeMod = DateHelper.SecondToTime((seconds));
+		if (timeMod.isHasTime()) {
+			var str = timeMod.hour + '小时' + timeMod.minute + '分'+timeMod.second+'秒';
+			if (timeMod.day > 0) { str = timeMod.day + "天" + str; }
+			$(this).html('<span class="glyphicon glyphicon-time"></span>' + str);
+			$(this).data("time", seconds);
+		}
+		else { $(this).html('已结束'); }
+	});
+}
+$(function(){
+	//menu float
+	var menufloatclicknumber=0;
+	function menufloatin(){
+		$(".menu-c").removeClass("out");
+		$("#menufloat").addClass("show")
+		$(".mask_menu").fadeIn();
+		$("#menufloat-c").show();
+		$(".menu-c-inner").removeClass("outer");
+		$(".menu-c-inner").addClass("in")
+		$(".menu-c-inner a").show();
+		menufloatclicknumber=1;
+	}
+	function menufloatout(){
+		$("#menufloat").removeClass("show")
+		$(".mask_menu").fadeOut();
+		$(".menu-c-inner").removeClass("in")
+		$(".menu-c-inner").addClass("outer")
+		$(".menu-c-inner a").hide();
+		$(".menu-c").addClass("out");
+		menufloatclicknumber=0;		
+	}	   
+	$("#menufloat").click(function(){
+		if(menufloatclicknumber==0){ menufloatin(); }
+		else { menufloatout();}			 	
+	})
+	$(".mask_menu").click(function(){
+		menufloatout(); 
+	})
+});
+</script>

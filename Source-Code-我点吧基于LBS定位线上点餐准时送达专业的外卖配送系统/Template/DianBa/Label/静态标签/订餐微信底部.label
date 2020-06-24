@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>360</LabelID>
+    <LabelName>订餐微信底部</LabelName>
+    <LabelType>1</LabelType>
+    <LabelCate>静态标签</LabelCate>
+    <LabelDesc />
+    <LabelParam />
+    <LabelTable />
+    <LabelField />
+    <LabelWhere />
+    <LabelOrder />
+    <LabelContent>&lt;div style="height:46px;"&gt;&lt;/div&gt;
+&lt;div class="mobile_footer"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="/Class_32/NodePage.aspx?ProClass=1"&gt;&lt;i class="fa fa-home"&gt;&lt;/i&gt;&lt;span&gt;堂食&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/Class_2/Default.aspx?ProClass=2"&gt;&lt;i class="fa fa-bicycle"&gt;&lt;/i&gt;&lt;span&gt;外卖&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/User/Default2.aspx"&gt;&lt;i class="fa fa-user"&gt;&lt;/i&gt;&lt;span&gt;会员&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</LabelContent>
+    <LabelCount />
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>

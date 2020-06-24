@@ -1,0 +1,36 @@
+﻿{ZL.Source id="节点栏目信息数据源"/}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="节点栏目信息数据源" FD="NodeName" page="0"/}_{$SiteName/}</title>
+{ZL:Boot()/}
+<script src="/JS/Plugs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myMode" ng-controller="namesController">
+</div>
+</body>
+</html>
+<script>
+var myModele=angular.module("myMode",[]);
+
+function namesController($scope) {
+	$scope.names = [
+		{name:'Jani',country:'Norway'},
+		{name:'Hege',country:'Sweden'},
+		{name:'Kai',country:'Denmark'}
+	];
+}
+var opts={
+	action:'GetCustom',
+	key:'',
+	alias:'shoplist',
+	psize:1,
+	cpage:1,
+	nodeid:1
+};
+$.post("/API/Center.ashx",opts,function(data){
+	console.log(data);
+})
+</script>

@@ -1,0 +1,78 @@
+{ZL.Source id="节点栏目信息数据源"/}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>提现申请</title>
+<meta name="Keywords" content="{SField sid="节点栏目信息数据源" FD="Meta_Keywords" page="0"/}" />
+<meta name="description" content="{SField sid="节点栏目信息数据源" FD="Meta_Description" page="0"/}" />
+{ZL:Boot()/}
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<link href="/dist/css/weui.min.css" rel="stylesheet" />
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script>
+$.post("/API/UserCheck.ashx?action=HasLogged", "", function (data) {
+	if (!data || data == "-1") {
+		location = "/wxpromo.aspx?r="+window.location.href;
+	}
+});
+</script>
+</head>
+<body>
+<div class="muser_tixian">
+<div class="muser_tixian_t">
+<ol class="breadcrumb">
+<li><a title="会员中心" href="/User/Default1.aspx">会员中心</a></li>
+<li class="active">提现申请</li>
+</ol>
+</div>
+
+<div class="container muser_tixian_a" style="display:none;">
+<div class="alert alert-info" role="alert"></div>
+</div>
+
+<div class="muser_tixian_b" style="display:none;">
+<ul>
+<li><a href="/User/UserFunc/Money/UserWithDraw.aspx"><i class="fa fa-money"></i>存入余额</a></li>
+<li><a href="/User/UserFunc/Money/WithDraw1.aspx"><i class="fa fa-credit-card-alt"></i>存入银行卡</a></li>
+<div class="clearfix"></div>
+</ul>
+</div>
+</div>
+</body>
+</html>
+<script>
+$().ready(function(e) {
+	var money='{ZL.Label id="获取当前用户充值金额" /}';
+	var status='{ZL.Label id="获取当前会员认证状态" /}';
+	console.log(status);
+	if(money<198)
+	{
+		$(".muser_tixian_b").remove();
+		$(".muser_tixian_a").show();
+		$(".muser_tixian_a .alert").html("充值未满198元不能申请提现！点击<a href=\"/PayOnline/SelectPayPlat1.aspx\" class=\"btn btn-danger\">我要充值</a>立即前往充值。");
+	}
+	else
+	{
+		if(status==""||status<0)
+		{
+			$(".muser_tixian_b").remove();
+			$(".muser_tixian_a").show();
+			$(".muser_tixian_a .alert").html("未实名认证（提现需要实名认证）！点击<a href=\"/User/Content/AddContent1.aspx?NodeID=106&ModelID=54\" class=\"btn btn-danger\">我要认证</a>立即前往认证。");
+		}
+		else if(status=="0")
+		{
+			$(".muser_tixian_b").remove();
+			$(".muser_tixian_a").show();
+			$(".muser_tixian_a .alert").html("您的会员认证资料正在审核中，请耐性等待！");
+		}		
+		else if(status=="99")
+		{
+			$(".muser_tixian_a .alert").html("您充值已满198元，会员认证已通过审核，可以申请提现，或点击<a href=\"/User/UserFunc/Money/WithdrawLog1.aspx\" class=\"btn btn-info\">提现日志</a>查看提现申请记录！");
+			$(".muser_tixian_b").show();
+			$(".muser_tixian_a").show();	
+		}
+	}
+	//alert(money);    
+});
+</script>

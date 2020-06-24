@@ -1,0 +1,164 @@
+﻿{ZL.Source id="节点栏目信息数据源"/}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{SField sid="节点栏目信息数据源" FD="NodeName" page="0"/}_{$SiteName/}</title>
+<meta name="Keywords" content="{SField sid="节点栏目信息数据源" FD="Meta_Keywords" page="0"/}" />
+<meta name="description" content="{SField sid="节点栏目信息数据源" FD="Meta_Description" page="0"/}" />
+{ZL:Boot()/}
+<link href="{$CssDir/}global.css?Version={ZL.Label id="前端样式版本号"/}" rel="stylesheet"/>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ynCD23qRFoyWBYk0M3bF1VEk"></script>
+<script src="/JS/Controls/B_User.js"></script>
+</head>
+<body>
+<div class="hidden-xs">
+{ZL.Label id="全站头部"/}
+<div class="shang_banner">
+<h1>精选商家值得每一个客户信赖</h1>
+</div>
+
+
+</div>
+<div class="visible-xs">
+<div class="shop_select">请选择门店</div>
+</div>
+<div class="container magint10 hidden-xs">
+<ul class="breadcrumb">
+<li><a href="/">首页</a></li>
+{ZL.Label id="输出多级节点导航_V3" NodeID="{SField sid="节点栏目信息数据源" FD="NodeID" page="0"/}" ShowNum="30" /}
+<li class="active">栏目列表</li>
+</ul>
+</div>
+
+<!--主体开始 -->
+<div class="container" >
+<div class="cont_imgbox1">
+<div class="cont_imgbox1_t text-center"><i class="fa fa-spinner fa-spin"></i> 正在为您查找附近的门店，请稍候...</div>
+<div class="cont_imgbox1_c">
+<ul class="media-list"></ul>
+</div>
+</div>
+</div><!--左 -->
+<!--频道首页主体结束 -->
+<div class="hidden-xs">
+{ZL.Label id="全站底部"/}
+</div>
+<div class="visible-xs">
+{ZL.Label id="订餐微信底部"/}
+</div>
+</body>
+</html>
+<script>
+//检测固顶事件
+var IO=document.getElementById('home_nav'),Y=IO,H=0,IE6;
+IE6=window.ActiveXObject&&!window.XMLHttpRequest;
+while(Y){H+=Y.offsetTop;Y=Y.offsetParent};
+if(IE6)
+    IO.style.cssText="position:absolute;top:expression(this.fix?(document"+
+        ".documentElement.scrollTop-(this.javascript||"+H+")):0)";
+window.onscroll=function (){
+    var d=document,s=Math.max(d.documentElement.scrollTop,document.body.scrollTop);
+     if(s>H&&IO.fix||s<=H&&!IO.fix)return;
+    if(!IE6)IO.style.position=IO.fix?"":"fixed";        
+    IO.fix=!IO.fix;
+};
+try{document.execCommand("BackgroundImageCache",false,true)}catch(e){};
+ //]]>
+
+//兼容wp8
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+  var msViewportStyle = document.createElement("style");
+  msViewportStyle.appendChild(
+    document.createTextNode(
+      "@-ms-viewport{width:auto!important}"
+    )
+  );
+  document.getElementsByTagName("head")[0].
+    appendChild(msViewportStyle);
+}
+var cpage=1;
+var para={
+	lng:'',
+	lat:'',
+	page:cpage,
+	psize:'10',
+	limit:0
+}
+var geoc = new BMap.Geocoder();  
+var map = new BMap.Map();
+var geolocation = new BMap.Geolocation();
+geolocation.getCurrentPosition(function(r){
+	if(this.getStatus() == BMAP_STATUS_SUCCESS)
+	{
+		var mypoint = new BMap.Point(r.point.lng,r.point.lat);
+		para.lng=r.point.lng;
+		para.lat=r.point.lat;
+		$.post('/API/nearby.ashx?action=mynear',para,function(data){
+								console.log(data);
+
+			data=JSON.parse(data);
+			if(data.retcode=="1")
+			{
+				if(data.result!="")
+				{
+					data=JSON.parse(data.result);
+					console.log(data);
+					var str = "";
+					for(i=0;i<data.length;i++)
+					{
+						str += "<li class=\"media\"><div class=\"media-left\"><a href=\"/Item/"+data[i].gid+".aspx?ProClass={$GetRequest(ProClass)$}\"><img class=\"media-object\" src=\"/UploadFiles/"+data[i].pic+"\" onerror=\"javascript:this.src='/UploadFiles/nopic.gif';\" alt=\""+data[i].title+"\"></a></div><div class=\"media-body\"><h4 class=\"media-heading\"><a href=\"/Item/105.aspx\" title=\""+data[i].title+"\">"+data[i].title+"</a></h4><ul><li><i class=\"fa fa-star\"></i> 评价：<span>"+data[i].score+"</span>分</li><li><i class=\"fa fa-cutlery\"></i> 主营：<span>"+data[i].major+"</span></li><li><i class=\"fa fa-clock-o\"></i> 营业时间："+data[i].	businesstime+"</li><li><i class=\"fa fa-map-marker\"></i> 地址："+data[i].address+"</li><li><a href=\"tel:"+data[i].phone+"\"><i class=\"fa fa-phone-square\"></i> 电话："+data[i].phone+"</a></li><li>配送范围："+data[i].	delivery+"米</li><li>您当前位置距离餐厅大约<span class=\"dist_span\">"+data[i].distnum+"米</span></li></ul></div><div class=\"media-left\"><a href=\"/Item/"+data[i].gid+".aspx?ProClass={$GetRequest(ProClass)$}\" type=\"button\" class=\"btn btn-success\">进入订餐</a></div></li>";
+					}
+					$(".cont_imgbox1_c .media-list").append(str);
+				}
+			}
+			$(".cont_imgbox1_t").hide();
+		});
+	}
+});
+$(window).scroll(function(){
+	if($(window).scrollTop() >= ($(document).height() - $(window).height()-100))
+	{
+		para.cpage++;
+		$.post('/API/nearby.ashx?action=mynear',para,function(data){
+			if(data.retcode=="1")
+			{
+				if(data.result!="")
+				{
+					data=JSON.parse(data.result);
+					var str = "";
+					for(i=0;i<data.length;i++)
+					{
+						str += "<li class=\"media\"><div class=\"media-left\"><a href=\"/Item/"+data[i].gid+".aspx?ProClass={$GetRequest(ProClass)$}\"><img class=\"media-object\" src=\"/UploadFiles/"+data[i].dmxxt+"\" onerror=\"javascript:this.src='/UploadFiles/nopic.gif';\" alt=\""+data[i].title+"\"></a></div><div class=\"media-body\"><h4 class=\"media-heading\"><a href=\"/Item/105.aspx\" title=\""+data[i].title+"\">"+data[i].title+"</a></h4><ul><li><i class=\"fa fa-star\"></i> 评价：<span>"+data[i].pf+"</span>分</li><li><i class=\"fa fa-cutlery\"></i> 主营：<span>"+data[i].zylb+"</span></li><li><i class=\"fa fa-clock-o\"></i> 营业时间："+data[i].yysj+"</li><li><i class=\"fa fa-map-marker\"></i> 地址："+data[i].storeadd+"</li><li><a href=\"tel:"+data[i].phone+"\"><i class=\"fa fa-phone-square\"></i> 电话："+data[i].phone+"</a></li><li>您当前位置距离餐厅大约<span class=\"dist_span\">"+data[i].distnum+"米</span></li></ul></div><div class=\"media-left\"><a href=\"/Item/"+data[i].gid+".aspx?ProClass={$GetRequest(ProClass)$}\" type=\"button\" class=\"btn btn-success\">进入订餐</a></div></li>";
+					}
+					$(".cont_imgbox1_c .media-list").append(str);
+				}
+			}
+		});
+	}
+});
+
+var buser = new B_User();//会员ajax登录状态需要结合JS/Controls/B_User.js引用同步生效
+buser.IsLogged(function(data,flag){
+	if(flag)
+	{
+		data=JSON.parse(data);
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").remove();
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").remove();
+		var namestr=data.UserName;
+		if(namestr.length>5)
+			namestr=namestr.substring(0,5)+"...";
+		$("#home_nav .navbar-nav.navbar-right").prepend("<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">欢迎您，"+namestr+" <span class=\"caret\"></span></a><ul class=\"dropdown-menu\" role=\"menu\"><li><a href=\"/User/Default.aspx\"><i class=\"fa fa-user\"></i> 会员中心</a></li><li><a href=\"/User/Order/OrderList.aspx\"><i class=\"fa fa-shopping-cart\"></i> 我的订单</a></li><li><a href=\"/User/Info/ConsumeDetail.aspx?SType=3\"><i class=\"fa fa-database\"></i> 我的积分</a></li><li><a href=\"javascript:;\" onclick=\"LogoutFun();\"><i class=\"fa fa-power-off\"></i> 安全退出</a></li></ul></li>");
+
+	}
+	else
+	{
+		$("#home_nav .navbar-nav.navbar-right li:eq(0)").show();
+		$("#home_nav .navbar-nav.navbar-right li:eq(1)").show();	
+	}
+});
+function LogoutFun()
+{
+	buser.Logout(function(){location=location;});
+}
+</script>

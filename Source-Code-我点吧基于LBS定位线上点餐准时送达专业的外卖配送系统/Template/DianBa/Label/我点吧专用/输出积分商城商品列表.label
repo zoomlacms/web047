@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <LabelID>320</LabelID>
+    <LabelName>输出积分商城商品列表</LabelName>
+    <LabelType>2</LabelType>
+    <LabelCate>我点吧专用</LabelCate>
+    <LabelDesc />
+    <LabelParam>NodeID,1,1,节点ID|TitleNum,30,1,标题长|ShowNum,10,1,显示数</LabelParam>
+    <LabelTable>ZL_Commodities</LabelTable>
+    <LabelField>ID,LinPrice,Proname,Thumbnails</LabelField>
+    <LabelWhere>(NodeID=@NodeID or FirstNodeID=@NodeID) And Sales=1 And Istrue=1 And Recycler=0</LabelWhere>
+    <LabelOrder>ZL_Commodities.AddTime DESC</LabelOrder>
+    <LabelContent>{Repeate}
+&lt;li&gt;
+&lt;a href="{ZL:GetShopUrl({Field="ID"/})/}?userid={ZL:GetuserID()/}"&gt;
+&lt;div class="jifen_list_cm"&gt;&lt;img src="{ZL:GetPicUrl({Field="Thumbnails"/})/}" alt="{Field="Proname"/}" onerror="javascript:this.src='/UploadFiles/nopic.gif';" /&gt;&lt;/div&gt;
+&lt;h3&gt;{ZL:CutText({Field="Proname"/},@TitleNum,)/}&lt;/h3&gt;
+  &lt;p&gt;&lt;i class="fa fa-rmb"&gt;&lt;/i&gt; {ZL:GetMoney({Field="LinPrice"/},2,1)/}元&lt;/p&gt;
+&lt;/a&gt;
+&lt;/li&gt;{/Repeate}</LabelContent>
+    <LabelCount>@ShowNum</LabelCount>
+    <LabelAddUser>0</LabelAddUser>
+    <LabelNodeID>0</LabelNodeID>
+    <Modeltypeinfo>计数判断</Modeltypeinfo>
+    <addroot>循环计算</addroot>
+    <setroot>等于</setroot>
+    <Modelvalue />
+    <Valueroot />
+    <IsOpen>0</IsOpen>
+    <FalseContent />
+    <DataSourceType />
+    <ConnectString />
+    <ProceName />
+    <ProceParam />
+  </Table>
+</NewDataSet>
